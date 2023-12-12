@@ -1,0 +1,41 @@
+header {
+  width: 100%;
+  max-width: 1440px;
+  height: 75px;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--Elements);
+  padding-inline: 50px;
+  z-index: 10;
+  box-shadow: 0 0 20px 0px var(--Shadow);
+}
+
+header h1 {
+  color: var(--Text);
+  font-size: min(5vw, 32px);
+  margin-right: 15px;
+}
+
+header button {
+  background-color: transparent;
+  border: none;
+  color: var(--Text);
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+header button:hover {
+  opacity: 70%;
+}
+
+header button svg {
+  font-size: 20px;
+}

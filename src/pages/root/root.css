@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  font-family: "Nunito Sans";
+  min-height: 100vh;
+  background-color: var(--Background);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+.app-container {
+  width: 1440px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 150px;
+}
