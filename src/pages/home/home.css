@@ -1,0 +1,30 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px 40px;
+  width: 100%;
+}
+
+.card-list {
+  list-style: none;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Elements);
+  width: min(90vw, 300px);
+  height: 400px;
+  text-decoration: none;
+  color: var(--Text);
+  line-height: 1.7em;
+  border-radius: 6px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+}
+
+.link-card:hover {
+  transform: scale(105%);
+}

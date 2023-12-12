@@ -1,0 +1,19 @@
+.flag-container {
+  height: 50%;
+}
+
+.flag-container img {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.details-container {
+  padding: 20px;
+  height: 50%;
+}
+
+.details-container h3 {
+  padding-block: 10px;
+}

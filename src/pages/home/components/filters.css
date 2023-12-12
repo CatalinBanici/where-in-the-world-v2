@@ -1,0 +1,101 @@
+.filter-container {
+  padding-block: 25px;
+  margin-block: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* search */
+.search-input-container {
+  background-color: var(--Elements);
+  height: 100%;
+  width: min(82vw, 400px);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 5px;
+}
+
+.search-input-container span {
+  height: 100%;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input-container span svg {
+  color: var(--Input);
+}
+
+.search-input-container input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding-block: 10px;
+  color: var(--Input);
+  height: 100%;
+  width: 100%;
+}
+
+.search-input-container input::placeholder {
+  color: var(--Input);
+}
+
+.total-container {
+  color: var(--Text);
+}
+
+/* select */
+
+.select-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.select-input-container {
+  position: relative;
+  display: flex;
+  width: 170px;
+  height: 100%;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+}
+
+.select-input-container select {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  padding: 15px;
+  background-color: var(--Elements);
+  color: var(--Text);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select-input-container span {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--Text);
+}
