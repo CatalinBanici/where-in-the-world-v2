@@ -19,7 +19,7 @@ export default function Home() {
     data: allCountriesData,
     isFetching: allCountriesLoading,
     isSuccess: allCountriesSuccess,
-    error: allCountriesError,
+    isError: allCountriesError,
   } = useGetAllCountriesQuery();
   const [
     triggerFetchRegionCountries,
@@ -27,7 +27,7 @@ export default function Home() {
       data: regionCountriesData,
       isFetching: regionCountriesLoading,
       isSuccess: regionCountriesSuccess,
-      error: regionCountriesError,
+      isError: regionCountriesError,
     },
   ] = useLazyGetCountriesByRegionQuery();
   const [
@@ -36,7 +36,7 @@ export default function Home() {
       data: subRegionCountriesData,
       isFetching: subRegionCountriesLoading,
       isSuccess: subRegionCountriesSuccess,
-      error: subRegionCountriesError,
+      isError: subRegionCountriesError,
     },
   ] = useLazyGetCountriesBySubRegionQuery();
 
@@ -49,13 +49,11 @@ export default function Home() {
     if (filterByRegionOption) {
       triggerFetchRegionCountries(filterByRegionOption);
     }
-  }, [filterByRegionOption]);
 
-  useEffect(() => {
     if (filterBySubRegionOption) {
       triggerFetchSubRegionCountries(filterBySubRegionOption);
     }
-  }, [filterBySubRegionOption]);
+  }, [filterByRegionOption, filterBySubRegionOption]);
 
   let renderData;
   let countryData;
@@ -120,7 +118,7 @@ export default function Home() {
         <Link
           className="link-card"
           title="Click to view more details."
-          to="details"
+          to={`details/${country.name.common}`}
         >
           <Card country={country} />
         </Link>

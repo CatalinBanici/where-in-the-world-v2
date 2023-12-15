@@ -1,0 +1,28 @@
+.border-wrapper div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-block: 10px;
+}
+
+.border-wrapper div a button {
+  margin: 5px;
+  border: none;
+  background-color: var(--Elements);
+  color: var(--Text);
+  min-width: 80px;
+  padding: 10px 10px;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.border-wrapper div a button:hover {
+  opacity: 70%;
+}
+
+.border-wrapper div a button:active {
+  opacity: 50%;
+}
