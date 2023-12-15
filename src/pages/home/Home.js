@@ -17,14 +17,16 @@ import "./home.css";
 export default function Home() {
   const {
     data: allCountriesData,
-    isLoading: allCountriesLoading,
+    isFetching: allCountriesLoading,
+    isSuccess: allCountriesSuccess,
     error: allCountriesError,
   } = useGetAllCountriesQuery();
   const [
     triggerFetchRegionCountries,
     {
       data: regionCountriesData,
-      isLoading: regionCountriesLoading,
+      isFetching: regionCountriesLoading,
+      isSuccess: regionCountriesSuccess,
       error: regionCountriesError,
     },
   ] = useLazyGetCountriesByRegionQuery();
@@ -32,7 +34,8 @@ export default function Home() {
     triggerFetchSubRegionCountries,
     {
       data: subRegionCountriesData,
-      isLoading: subRegionCountriesLoading,
+      isFetching: subRegionCountriesLoading,
+      isSuccess: subRegionCountriesSuccess,
       error: subRegionCountriesError,
     },
   ] = useLazyGetCountriesBySubRegionQuery();
@@ -46,80 +49,98 @@ export default function Home() {
     if (filterByRegionOption) {
       triggerFetchRegionCountries(filterByRegionOption);
     }
-    console.log("filterByRegionOption effect");
   }, [filterByRegionOption]);
 
   useEffect(() => {
     if (filterBySubRegionOption) {
       triggerFetchSubRegionCountries(filterBySubRegionOption);
-      console.log("filterBySubRegionOption effect");
     }
   }, [filterBySubRegionOption]);
+
+  let renderData;
+  let countryData;
 
   if (
     allCountriesLoading ||
     regionCountriesLoading ||
     subRegionCountriesLoading
   ) {
-    return <div>Loading...</div>;
-  }
-
-  if (allCountriesError || regionCountriesError || subRegionCountriesError) {
-    return <div>ERROR</div>;
-  }
-
-  let displayCountries;
-
-  if (allCountriesData && !filterByRegionOption) {
-    displayCountries = [...allCountriesData];
-  } else if (regionCountriesData && filterByRegionOption) {
-    displayCountries = [...regionCountriesData];
-  } else {
-    return null;
-  }
-
-  if (subRegionCountriesData && filterBySubRegionOption) {
-    displayCountries = [...subRegionCountriesData];
-  }
-
-  if (filterSearchByNameOption) {
-    displayCountries = displayCountries.filter((country) =>
-      country.name.common
-        .toLowerCase()
-        .includes(filterSearchByNameOption.toLowerCase())
+    renderData = (
+      <div style={{ color: "white", fontSize: "100px" }}>LOADING</div>
     );
+  } else if (
+    allCountriesError ||
+    regionCountriesError ||
+    subRegionCountriesError
+  ) {
+    renderData = <div style={{ color: "white", fontSize: "100px" }}>ERROR</div>;
+  } else if (
+    allCountriesSuccess ||
+    regionCountriesSuccess ||
+    subRegionCountriesSuccess
+  ) {
+    if (!filterByRegionOption && allCountriesData) {
+      countryData = [...allCountriesData];
+    } else if (filterByRegionOption && regionCountriesData) {
+      countryData = [...regionCountriesData];
+    } else {
+      return null;
+    }
+    if (filterBySubRegionOption && subRegionCountriesData) {
+      countryData = [...subRegionCountriesData];
+    }
+
+    if (sortOption) {
+      countryData.sort((a, b) => {
+        switch (sortOption) {
+          case "pop+":
+            return a.population - b.population;
+          case "pop-":
+            return b.population - a.population;
+          case "name+":
+            return a.name.common.localeCompare(b.name.common);
+          case "name-":
+            return b.name.common.localeCompare(a.name.common);
+          default:
+            return null;
+        }
+      });
+    }
+
+    if (filterSearchByNameOption) {
+      countryData = countryData.filter((country) =>
+        country.name.common
+          .toLowerCase()
+          .includes(filterSearchByNameOption.toLowerCase())
+      );
+    }
+
+    renderData = countryData.map((country, index) => (
+      <li className="card-list" key={index}>
+        <Link
+          className="link-card"
+          title="Click to view more details."
+          to="details"
+        >
+          <Card country={country} />
+        </Link>
+      </li>
+    ));
   }
 
-  displayCountries.sort((a, b) => {
-    switch (sortOption) {
-      case "pop+":
-        return a.population - b.population;
-      case "pop-":
-        return b.population - a.population;
-      case "name+":
-        return a.name.common.localeCompare(b.name.common);
-      case "name-":
-        return b.name.common.localeCompare(a.name.common);
-      default:
-        return null;
-    }
-  });
-
-  const subRegions =
-    (filterByRegionOption && regionCountriesData.map((e) => e.subregion)) ||
-    allCountriesData.map((e) => e.subregion);
-  const subRegionsArray = [...new Set(subRegions)];
-
-  const regions = allCountriesData.map((e) => e.region);
+  const regions = allCountriesData?.map((e) => e.region);
   const regionsArray = [...new Set(regions)];
 
-  console.log(displayCountries);
+  const subRegions =
+    (filterByRegionOption && regionCountriesData?.map((e) => e.subregion)) ||
+    allCountriesData?.map((e) => e.subregion);
+  const subRegionsArray = [...new Set(subRegions)];
 
   return (
     <>
       <div className="filter-container">
         <Filters
-          displayCountries={displayCountries}
+          renderData={renderData}
           subRegionsArray={subRegionsArray}
           regionsArray={regionsArray}
           sortOption={sortOption}
@@ -132,19 +153,7 @@ export default function Home() {
           setFilterSearchByNameOption={setFilterSearchByNameOption}
         />
       </div>
-      <ul className="card-container">
-        {displayCountries.map((country, index) => (
-          <li className="card-list" key={index}>
-            <Link
-              className="link-card"
-              title="Click to view more details."
-              to="details"
-            >
-              <Card country={country} />
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <ul className="card-container">{renderData}</ul>
     </>
   );
 }

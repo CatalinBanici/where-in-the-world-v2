@@ -9,7 +9,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import "./filters.css";
 
 export default function Filters({
-  displayCountries,
+  renderData,
   subRegionsArray,
   regionsArray,
   sortOption,
@@ -57,19 +57,19 @@ export default function Filters({
       </div>
 
       <div className="total-container">
-        <h3>Total countries: {displayCountries.length}</h3>
+        <h3>Total countries: {renderData.length}</h3>
       </div>
 
       <div className="select-wrapper">
         <div className="select-input-container">
-          <label>Sort by</label>
+          <label htmlFor="countrySorting">Sort by</label>
           <select
             id="countrySorting"
             name="sort"
             value={sortOption}
             onChange={handleSortingChange}
           >
-            <option defaultValue="none">None</option>
+            <option value="">None</option>
             <option value="pop+">Population 0 - 9</option>
             <option value="pop-">Population 9 - 0</option>
             <option value="name+">Name A - Z</option>
