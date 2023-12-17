@@ -7,7 +7,7 @@
 }
 
 [data-theme="light"] {
-  --Background: hsl(0, 0%, 98%);
+  --Background: hsl(0, 2%, 90%);
   --Elements: hsl(0, 0%, 100%);
   --Shadow: hsl(0, 0%, 81%);
   --Text: hsl(200, 15%, 8%);

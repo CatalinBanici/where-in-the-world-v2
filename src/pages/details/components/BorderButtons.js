@@ -27,7 +27,7 @@ export default function BorderButtons({ countryDetailsData }) {
       <p>
         <strong>Border Countries: </strong>
       </p>
-      <>
+      <div>
         {(countryCodesLoading && <div>loading borders</div>) ||
           (countryCodesError && <div>error borders</div>) ||
           (countryCodesSuccess &&
@@ -37,7 +37,7 @@ export default function BorderButtons({ countryDetailsData }) {
               </Link>
             )))}
         {!borderString && <div>no borders</div>}
-      </>
+      </div>
     </div>
   );
 }

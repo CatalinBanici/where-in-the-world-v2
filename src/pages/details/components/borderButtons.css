@@ -1,13 +1,20 @@
-.border-wrapper div {
+.border-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-block: 10px;
 }
+.border-wrapper div {
+  margin-block: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-.border-wrapper div a button {
-  margin: 5px;
+.border-wrapper div a {
+  margin: 5px 10px 5px 0;
   border: none;
   background-color: var(--Elements);
   color: var(--Text);
@@ -17,12 +24,13 @@
   border-radius: 6px;
   transition: 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.border-wrapper div a button:hover {
+.border-wrapper a:hover {
   opacity: 70%;
 }
 
-.border-wrapper div a button:active {
+.border-wrapper a:active {
   opacity: 50%;
 }

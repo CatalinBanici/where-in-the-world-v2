@@ -44,20 +44,22 @@ export default function Filters({
   }
   return (
     <>
-      <div className="search-input-container">
-        <span>
-          <AiOutlineSearch />
-        </span>
-        <input
-          type="search"
-          placeholder="Search for a country..."
-          value={filterSearchByNameOption}
-          onChange={handleSearchFilterChange}
-        />
-      </div>
+      <div className="search-total-container">
+        <div className="search-input-container">
+          <span>
+            <AiOutlineSearch />
+          </span>
+          <input
+            type="search"
+            placeholder="Search for a country..."
+            value={filterSearchByNameOption}
+            onChange={handleSearchFilterChange}
+          />
+        </div>
 
-      <div className="total-container">
-        <h3>Total countries: {renderData.length}</h3>
+        <div className="total-container">
+          <h3>Total countries: {renderData.length}</h3>
+        </div>
       </div>
 
       <div className="select-wrapper">
@@ -116,7 +118,9 @@ export default function Filters({
           </span>
         </div>
 
-        <button onClick={handleClearFiltersButton}>Clear</button>
+        <button className="clear-button" onClick={handleClearFiltersButton}>
+          Clear
+        </button>
       </div>
     </>
   );
