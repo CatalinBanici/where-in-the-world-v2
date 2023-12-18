@@ -39,3 +39,9 @@ header button:hover {
 header button svg {
   font-size: 20px;
 }
+
+@media (max-width: 1070px) {
+  header {
+    padding-inline: 20px;
+  }
+}

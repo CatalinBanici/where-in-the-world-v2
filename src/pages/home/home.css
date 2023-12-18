@@ -27,4 +27,5 @@
 
 .link-card:hover {
   transform: scale(105%);
+  background-color: var(--ElementsHover);
 }

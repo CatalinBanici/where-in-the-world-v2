@@ -63,15 +63,13 @@ export default function Home() {
     regionCountriesLoading ||
     subRegionCountriesLoading
   ) {
-    renderData = (
-      <div style={{ color: "white", fontSize: "100px" }}>LOADING</div>
-    );
+    renderData = <div>LOADING</div>;
   } else if (
     allCountriesError ||
     regionCountriesError ||
     subRegionCountriesError
   ) {
-    renderData = <div style={{ color: "white", fontSize: "100px" }}>ERROR</div>;
+    renderData = <div>ERROR</div>;
   } else if (
     allCountriesSuccess ||
     regionCountriesSuccess ||

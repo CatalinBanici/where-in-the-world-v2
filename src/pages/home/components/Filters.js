@@ -1,9 +1,10 @@
 // REACT
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // REACT ICONS
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 
 // STYLES
 import "./filters.css";
@@ -21,27 +22,27 @@ export default function Filters({
   filterSearchByNameOption,
   setFilterSearchByNameOption,
 }) {
-  function handleRegionFilterChange(e) {
-    setFilterByRegionOption(e.target.value);
-    setFilterBySubRegionOption("");
-    setFilterSearchByNameOption("");
-  }
-  function handleSubRegionFilterChange(e) {
-    setFilterBySubRegionOption(e.target.value);
-    setFilterSearchByNameOption("");
-  }
-  function handleSortingChange(e) {
-    setSortOption(e.target.value);
-  }
-  function handleSearchFilterChange(e) {
-    setFilterSearchByNameOption(e.target.value);
-  }
-  function handleClearFiltersButton() {
-    setFilterByRegionOption("");
-    setFilterBySubRegionOption("");
-    setSortOption("");
-    setFilterSearchByNameOption("");
-  }
+  const [filterMenuOpen, setFilterMenuOpen] = useState(false);
+  const filtersRef = useRef();
+  const filterButtonRef = useRef();
+
+  useEffect(() => {
+    function closeOnOutsideClick(e) {
+      if (
+        filterMenuOpen &&
+        filtersRef.current &&
+        !filtersRef.current.contains(e.target) &&
+        !filterButtonRef.current.contains(e.target)
+      ) {
+        setFilterMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+    };
+  }, [filterMenuOpen]);
+
   return (
     <>
       <div className="search-total-container">
@@ -51,9 +52,9 @@ export default function Filters({
           </span>
           <input
             type="search"
-            placeholder="Search for a country..."
+            placeholder="Search"
             value={filterSearchByNameOption}
-            onChange={handleSearchFilterChange}
+            onChange={(e) => setFilterSearchByNameOption(e.target.value)}
           />
         </div>
 
@@ -62,14 +63,33 @@ export default function Filters({
         </div>
       </div>
 
-      <div className="select-wrapper">
+      <div className="filters-menu" ref={filterButtonRef}>
+        <button onClick={() => setFilterMenuOpen(!filterMenuOpen)}>
+          <span>Filters</span>
+          <span>
+            <AiOutlineMenu />
+          </span>
+          <span>
+            <AiFillCaretDown />
+          </span>
+        </button>
+      </div>
+
+      <div
+        ref={filtersRef}
+        className={`select-wrapper ${
+          filterMenuOpen === true
+            ? "select-wrapper-open"
+            : "select-wrapper-closed"
+        }`}
+      >
         <div className="select-input-container">
           <label htmlFor="countrySorting">Sort by</label>
           <select
             id="countrySorting"
             name="sort"
             value={sortOption}
-            onChange={handleSortingChange}
+            onChange={(e) => setSortOption(e.target.value)}
           >
             <option value="">None</option>
             <option value="pop+">Population 0 - 9</option>
@@ -88,7 +108,11 @@ export default function Filters({
             id="regionFilters"
             name="filters"
             value={filterByRegionOption}
-            onChange={handleRegionFilterChange}
+            onChange={(e) => {
+              setFilterByRegionOption(e.target.value);
+              setFilterBySubRegionOption("");
+              setFilterSearchByNameOption("");
+            }}
           >
             <option value="">All</option>
             {regionsArray.map((region, index) => (
@@ -106,7 +130,10 @@ export default function Filters({
             id="subregionFilters"
             name="filters"
             value={filterBySubRegionOption}
-            onChange={handleSubRegionFilterChange}
+            onChange={(e) => {
+              setFilterBySubRegionOption(e.target.value);
+              setFilterSearchByNameOption("");
+            }}
           >
             <option value="">All</option>
             {subRegionsArray.map((subregion, index) => (
@@ -118,7 +145,15 @@ export default function Filters({
           </span>
         </div>
 
-        <button className="clear-button" onClick={handleClearFiltersButton}>
+        <button
+          className="clear-button"
+          onClick={(e) => {
+            setFilterByRegionOption("");
+            setFilterBySubRegionOption("");
+            setSortOption("");
+            setFilterSearchByNameOption("");
+          }}
+        >
           Clear
         </button>
       </div>
