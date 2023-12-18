@@ -59,7 +59,7 @@ export default function Filters({
         </div>
 
         <div className="total-container">
-          <h3>Total countries: {renderData.length}</h3>
+          <h3>Total countries: {renderData?.length}</h3>
         </div>
       </div>
 

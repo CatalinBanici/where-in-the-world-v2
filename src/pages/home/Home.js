@@ -77,11 +77,12 @@ export default function Home() {
   ) {
     if (!filterByRegionOption && allCountriesData) {
       countryData = [...allCountriesData];
-    } else if (filterByRegionOption && regionCountriesData) {
-      countryData = [...regionCountriesData];
-    } else {
-      return null;
     }
+
+    if (filterByRegionOption && regionCountriesData) {
+      countryData = [...regionCountriesData];
+    }
+
     if (filterBySubRegionOption && subRegionCountriesData) {
       countryData = [...subRegionCountriesData];
     }
@@ -111,7 +112,7 @@ export default function Home() {
       );
     }
 
-    renderData = countryData.map((country, index) => (
+    renderData = countryData?.map((country, index) => (
       <li className="card-list" key={index}>
         <Link
           className="link-card"
