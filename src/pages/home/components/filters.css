@@ -216,11 +216,11 @@
   .select-wrapper-open {
     display: flex;
     flex-direction: column;
-    max-width: 360px;
+    max-width: 370px;
   }
 
   .select-input-container {
-    max-width: 360px;
+    max-width: 370px;
     height: 40px;
   }
 

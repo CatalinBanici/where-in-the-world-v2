@@ -96,3 +96,33 @@
 .google-maps p a {
   color: var(--Text);
 }
+
+@media (max-width: 1070px) {
+  .extra-details-container {
+    flex-direction: column;
+  }
+
+  .flag img {
+    width: min(80vw, 300px);
+  }
+
+  .flag {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .details-wrapper {
+    flex-wrap: nowrap;
+    height: auto;
+  }
+}

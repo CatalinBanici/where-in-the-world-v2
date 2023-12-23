@@ -1,0 +1,21 @@
+.error-component h2 {
+  color: var(--Text);
+  margin-block: 50px;
+  padding-inline: 20px;
+}
+
+.not-found {
+  background-color: var(--Background);
+  margin-block: 100px;
+  padding-inline: 20px;
+  color: var(--Text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.not-found p a {
+  color: var(--Text);
+}

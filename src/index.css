@@ -5,6 +5,11 @@
   --Shadow: hsl(209, 34%, 14%);
   --Text: hsl(0, 0%, 100%);
   --Input: hsl(0, 2%, 76%);
+  --LoadingGradient: linear-gradient(
+    to right,
+    hsl(208, 14%, 38%),
+    hsl(209, 18%, 28%)
+  );
 }
 
 [data-theme="light"] {
@@ -14,4 +19,9 @@
   --Shadow: hsl(0, 0%, 81%);
   --Text: hsl(200, 15%, 8%);
   --Input: hsl(0, 0%, 52%);
+  --LoadingGradient: linear-gradient(
+    to right,
+    hsl(0, 0%, 83%),
+    hsl(0, 3%, 94%)
+  );
 }

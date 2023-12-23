@@ -13,6 +13,8 @@ import Card from "./components/Card";
 
 // STYLES
 import "./home.css";
+import HomeLoading from "../loading/HomeLoading";
+import Error from "../error/Error";
 
 export default function Home() {
   const {
@@ -63,13 +65,13 @@ export default function Home() {
     regionCountriesLoading ||
     subRegionCountriesLoading
   ) {
-    renderData = <div>LOADING</div>;
+    renderData = <HomeLoading />;
   } else if (
     allCountriesError ||
     regionCountriesError ||
     subRegionCountriesError
   ) {
-    renderData = <div>ERROR</div>;
+    renderData = <Error />;
   } else if (
     allCountriesSuccess ||
     regionCountriesSuccess ||

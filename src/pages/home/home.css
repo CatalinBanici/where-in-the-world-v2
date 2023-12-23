@@ -23,9 +23,20 @@
   border-radius: 6px;
   transition: 0.3s;
   box-shadow: 0 0 20px 5px var(--Shadow);
+  animation: opacity-animation 1s;
 }
 
 .link-card:hover {
   transform: scale(105%);
   background-color: var(--ElementsHover);
+}
+
+@keyframes opacity-animation {
+  0% {
+    opacity: 30%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }

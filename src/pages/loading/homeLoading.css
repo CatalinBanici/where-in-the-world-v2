@@ -1,0 +1,56 @@
+.card-loading-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Elements);
+  width: min(90vw, 300px);
+  height: 400px;
+  text-decoration: none;
+  color: var(--Text);
+  line-height: 1.7em;
+  border-radius: 6px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.flag-loading {
+  height: 50%;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+}
+
+.details-loading {
+  padding: 20px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h3 {
+  height: 30px;
+  margin-block: 5px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+}
+
+.p {
+  background-color: var(--ElementsHover);
+  height: 15px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
