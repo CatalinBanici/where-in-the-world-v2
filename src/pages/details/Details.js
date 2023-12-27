@@ -8,6 +8,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import "./details.css";
 import BorderButtons from "./components/BorderButtons";
 import DetailsLoading from "../loading/DetailsLoading";
+import Error from "../error/Error";
 
 export default function Details() {
   const { nameParam } = useParams();
@@ -23,8 +24,6 @@ export default function Details() {
   const nativeName =
     countryDetailsData &&
     Object.values(countryDetailsData[0]?.name.nativeName).pop();
-
-  const loading = true;
 
   return (
     <>
@@ -43,7 +42,7 @@ export default function Details() {
         </div>
       </div>
       {(countryDetailsLoading && <DetailsLoading />) ||
-        (countryDetailsError && <div>ERROR DETAILS</div>) ||
+        (countryDetailsError && <Error />) ||
         (countryDetailsSuccess && (
           <div className="extra-details-container">
             <div className="flag">

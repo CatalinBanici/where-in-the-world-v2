@@ -28,7 +28,7 @@
 }
 
 .border-wrapper a:hover {
-  opacity: 70%;
+  background-color: var(--ElementsHover);
 }
 
 .border-wrapper a:active {

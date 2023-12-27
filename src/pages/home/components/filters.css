@@ -30,10 +30,10 @@
 
 .search-input-container span {
   height: 100%;
-  width: 50px;
+  width: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 15px;
 }
 
 .search-input-container span svg {
@@ -42,13 +42,18 @@
 
 .search-input-container input {
   background-color: transparent;
+  border-radius: 5px;
   border: none;
   outline: none;
   font-size: 16px;
-  padding-block: 10px;
+  padding: 10px;
   color: var(--Input);
   height: 100%;
   width: 100%;
+}
+
+.search-input-container input:focus-visible {
+  border: solid 1px var(--Text);
 }
 
 .search-input-container input::placeholder {
@@ -121,6 +126,10 @@
   background-color: var(--ElementsHover);
 }
 
+.select-input-container select:focus-visible {
+  border: solid 1px var(--Text);
+}
+
 .select-input-container select:active {
   opacity: 50%;
 }
@@ -149,10 +158,15 @@
   color: var(--Text);
   cursor: pointer;
   transition: 0.5s;
+  border: 1px solid var(--Elements);
 }
 
 .clear-button:hover {
   background-color: var(--ElementsHover);
+}
+
+.clear-button:focus-visible {
+  border: solid 1px var(--Text);
 }
 
 .clear-button:active {
@@ -194,6 +208,7 @@
     border-radius: 5px;
     color: var(--Text);
     cursor: pointer;
+    transition: 0.3s;
   }
 
   .filters-menu button:hover {

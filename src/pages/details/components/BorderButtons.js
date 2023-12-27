@@ -22,21 +22,27 @@ export default function BorderButtons({ countryDetailsData }) {
     console.log("codes effect ran");
   }, [borderString]);
 
+  const loadingOrError = true;
+
   return (
     <div className="border-wrapper">
       <p>
         <strong>Border Countries: </strong>
       </p>
       <div>
-        {(countryCodesLoading && <div>loading borders</div>) ||
-          (countryCodesError && <div>error borders</div>) ||
+        {(countryCodesLoading && <p>Loading Borders...</p>) ||
+          (countryCodesError && <p>Error: Could not get Borders Data</p>) ||
           (countryCodesSuccess &&
             countryCodesData?.map((element, index) => (
-              <Link key={index} to={`../details/${element.name?.common}`}>
+              <Link
+                title={`Go to ${element.name?.common}`}
+                key={index}
+                to={`../details/${element.name?.common}`}
+              >
                 {element.name?.common}
               </Link>
             )))}
-        {!borderString && <div>no borders</div>}
+        {!borderString && <div>Island</div>}
       </div>
     </div>
   );

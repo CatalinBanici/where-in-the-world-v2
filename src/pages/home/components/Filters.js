@@ -2,9 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // REACT ICONS
-import { AiOutlineSearch } from "react-icons/ai";
-import { AiFillCaretDown } from "react-icons/ai";
-import { AiOutlineMenu } from "react-icons/ai";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 
 // STYLES
 import "./filters.css";
@@ -70,7 +69,7 @@ export default function Filters({
             <AiOutlineMenu />
           </span>
           <span>
-            <AiFillCaretDown />
+            {filterMenuOpen === true ? <FaAngleUp /> : <FaAngleDown />}
           </span>
         </button>
       </div>
@@ -98,7 +97,7 @@ export default function Filters({
             <option value="name-">Name Z - A</option>
           </select>
           <span>
-            <AiFillCaretDown />
+            <FaAngleDown />
           </span>
         </div>
 
@@ -120,7 +119,7 @@ export default function Filters({
             ))}
           </select>
           <span>
-            <AiFillCaretDown />
+            <FaAngleDown />
           </span>
         </div>
 
@@ -141,11 +140,12 @@ export default function Filters({
             ))}
           </select>
           <span>
-            <AiFillCaretDown />
+            <FaAngleDown />
           </span>
         </div>
 
         <button
+          title="Clear Filters"
           className="clear-button"
           onClick={(e) => {
             setFilterByRegionOption("");

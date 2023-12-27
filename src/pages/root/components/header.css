@@ -14,9 +14,13 @@ header {
 }
 
 header h1 {
-  color: var(--Text);
   font-size: min(5vw, 32px);
   margin-right: 15px;
+}
+
+header h1 a {
+  color: var(--Text);
+  text-decoration: none;
 }
 
 header button {

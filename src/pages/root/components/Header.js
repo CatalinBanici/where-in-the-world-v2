@@ -1,17 +1,25 @@
 // REACT ICONS
-import { MdDarkMode } from "react-icons/md";
-import { MdOutlineDarkMode } from "react-icons/md";
+import { MdDarkMode, MdOutlineWbSunny } from "react-icons/md";
+
+// REACT ROUTER
+import { Link, useNavigate } from "react-router-dom";
 
 // STYLES
 import "./header.css";
 
 export default function Header({ theme, handleTheme }) {
+  const navigate = useNavigate();
   return (
     <header>
-      <h1>Where in the world?</h1>
-      <button onClick={handleTheme}>
-        <span>{theme === "dark" ? <MdDarkMode /> : <MdOutlineDarkMode />}</span>
-        Dark Mode
+      <h1 title="Navigate to Home Page">
+        <Link to="/">Where in the World?</Link>
+      </h1>
+      <button
+        title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+        onClick={handleTheme}
+      >
+        <span>{theme === "dark" ? <MdDarkMode /> : <MdOutlineWbSunny />}</span>
+        {theme === "dark" ? "Light Theme" : "Dark Theme"}
       </button>
     </header>
   );
