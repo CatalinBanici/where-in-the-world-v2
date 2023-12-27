@@ -1,0 +1,125 @@
+.details-loading-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flag-details-loading-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flag-details-loading {
+  height: 90%;
+  width: 90%;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+}
+
+.details-details-loading {
+  width: 50%;
+  padding: 20px;
+}
+
+.h2-loading {
+  height: 20px;
+  width: 170px;
+  margin-bottom: 35px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+}
+
+.ul-loading {
+  display: flex;
+  flex-direction: column;
+
+  height: 160px;
+  flex-wrap: wrap;
+}
+
+.li-loading {
+  color: var(--Text);
+  height: 15px;
+  width: 200px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+  margin-block: 8px;
+  list-style: none;
+}
+
+.google {
+  height: 15px;
+  width: 150px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+  margin-block: 20px;
+}
+
+.border-title-loading {
+  height: 15px;
+  width: 170px;
+  margin-bottom: 35px;
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+  margin-block: 40px;
+}
+
+.border-button-loading {
+  background-image: var(--LoadingGradient);
+  background-size: 400%;
+  animation: loading-animation 1s infinite alternate;
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+@media (max-width: 1070px) {
+  .details-loading-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flag-details-loading-container {
+    height: 230px;
+    width: unset;
+  }
+  .flag-details-loading {
+    width: 350px;
+  }
+
+  .details-details-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: unset;
+  }
+
+  .ul-loading {
+    flex-wrap: nowrap;
+    height: unset;
+  }
+
+  .border-title-loading {
+    margin-block: 20px;
+    align-self: flex-start;
+  }
+
+  .border-button-loading {
+    align-self: flex-start;
+  }
+}

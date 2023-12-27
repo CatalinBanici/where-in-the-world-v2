@@ -1,6 +1,9 @@
 // REACT
 import React, { useState, useEffect } from "react";
 
+// REACT ROUTER
+import { Link } from "react-router-dom";
+
 // REDUX
 import {
   useGetAllCountriesQuery,
@@ -8,7 +11,6 @@ import {
   useLazyGetCountriesBySubRegionQuery,
 } from "../../redux/api/countriesApi";
 import Filters from "./components/Filters";
-import { Link } from "react-router-dom";
 import Card from "./components/Card";
 
 // STYLES

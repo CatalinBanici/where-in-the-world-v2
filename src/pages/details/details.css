@@ -53,13 +53,15 @@
 /* details container */
 .extra-details-container {
   width: 100%;
-
+  animation: opacity-animation 1s;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .flag {
+  display: flex;
+  align-items: center;
   width: 50%;
 }
 
@@ -95,6 +97,16 @@
 
 .google-maps p a {
   color: var(--Text);
+}
+
+@keyframes opacity-animation {
+  0% {
+    opacity: 30%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }
 
 @media (max-width: 1070px) {
