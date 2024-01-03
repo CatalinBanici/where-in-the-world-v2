@@ -12,7 +12,7 @@ export default function Header({ theme, handleTheme }) {
   return (
     <header>
       <h1 title="Navigate to Home Page">
-        <Link to="/">Where in the World?</Link>
+        <Link to="/">Countries</Link>
       </h1>
       <button
         title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}

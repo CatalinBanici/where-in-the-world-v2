@@ -33,11 +33,15 @@ header button {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 header button:hover {
   opacity: 70%;
+}
+
+header button:active {
+  opacity: 50%;
 }
 
 header button svg {
@@ -47,5 +51,13 @@ header button svg {
 @media (max-width: 1070px) {
   header {
     padding-inline: 20px;
+  }
+
+  header button:hover {
+    opacity: unset;
+  }
+
+  header button:active {
+    opacity: 50%;
   }
 }

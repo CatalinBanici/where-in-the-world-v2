@@ -119,7 +119,7 @@
   height: 100%;
   width: 200px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .select-input-container select:hover {
@@ -157,7 +157,7 @@
   background-color: var(--Elements);
   color: var(--Text);
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.2s;
   border: 1px solid var(--Elements);
 }
 
@@ -170,7 +170,7 @@
 }
 
 .clear-button:active {
-  opacity: 50%;
+  opacity: 70%;
 }
 
 @media (max-width: 1070px) {
@@ -204,19 +204,16 @@
     display: flex;
     flex-direction: row;
     background-color: var(--Elements);
+    box-shadow: 0 0 20px 5px var(--Shadow);
     border: none;
     border-radius: 5px;
     color: var(--Text);
     cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .filters-menu button:hover {
-    background-color: var(--ElementsHover);
+    transition: 0.2s;
   }
 
   .filters-menu button:active {
-    opacity: 50%;
+    opacity: 70%;
   }
 
   .filters-menu button span:nth-child(1) {
@@ -250,18 +247,17 @@
     min-width: 160px;
   }
 
+  .select-input-container select:hover {
+    background-color: var(--Elements);
+  }
+
   .clear-button {
-    max-width: 360px;
+    width: 150px;
+    align-self: center;
     height: 40px;
   }
+
+  .clear-button:hover {
+    background-color: var(--Elements);
+  }
 }
-
-/* @media (max-width: 460px) {
-  .total-container h3 {
-    font-size: 16px;
-  }
-
-  .search-input-container {
-    max-width: 190px;
-  }
-} */

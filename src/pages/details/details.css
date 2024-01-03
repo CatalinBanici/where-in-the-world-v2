@@ -38,7 +38,7 @@
   align-items: center;
   box-shadow: 0 0 20px 5px var(--Shadow);
   border-radius: 6px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .back-button-container button:active {
-  opacity: 50%;
+  opacity: 70%;
 }
 
 /* details container */
@@ -97,10 +97,14 @@
 
 .google-maps p a {
   color: var(--Text);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .google-maps p a:hover {
+  opacity: 70%;
+}
+
+.google-maps p a:active {
   opacity: 50%;
 }
 
@@ -141,5 +145,17 @@
   .details-wrapper {
     flex-wrap: nowrap;
     height: auto;
+  }
+
+  .back-button-container button:hover {
+    background-color: var(--Elements);
+  }
+
+  .google-maps p a:hover {
+    opacity: unset;
+  }
+
+  .google-maps p a:active {
+    opacity: 70%;
   }
 }

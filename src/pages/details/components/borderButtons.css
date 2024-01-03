@@ -22,7 +22,7 @@
   padding: 10px 10px;
   box-shadow: 0 0 20px 5px var(--Shadow);
   border-radius: 6px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
   text-decoration: none;
 }
@@ -32,5 +32,11 @@
 }
 
 .border-wrapper a:active {
-  opacity: 50%;
+  opacity: 70%;
+}
+
+@media (max-width: 1070px) {
+  .border-wrapper a:hover {
+    background-color: var(--Elements);
+  }
 }
