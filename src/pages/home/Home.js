@@ -129,6 +129,8 @@ export default function Home() {
     ));
   }
 
+  console.log("countryData", countryData);
+
   const regions = allCountriesData?.map((e) => e.region);
   const regionsArray = [...new Set(regions)];
 

@@ -22,8 +22,15 @@ export default function Details() {
 
   const navigate = useNavigate();
   const nativeName =
-    countryDetailsData &&
-    Object.values(countryDetailsData[0]?.name.nativeName).pop();
+    countryDetailsSuccess && countryDetailsData[0]?.name?.nativeName;
+  const nativeNameKeys = nativeName && Object.keys(nativeName);
+  const nativeNameValues =
+    nativeName && Object.values(nativeName).map((e) => e.common);
+
+  console.log("countryDetailsData", countryDetailsData);
+  console.log("nativeName", nativeName);
+  console.log("nativeNameKeys", nativeNameKeys);
+  console.log("nativeNameValues", nativeNameValues);
 
   return (
     <>
@@ -59,7 +66,28 @@ export default function Details() {
               <ul className="details-wrapper">
                 <li>
                   <strong> Native Names: </strong>
-                  {Object.values(nativeName.common)}
+                  <div className="native-names-container">
+                    <div className="native-names-keys">
+                      {nativeNameKeys?.map((e, i) => (
+                        <div key={i}>{e}:</div>
+                      ))}
+                    </div>
+                    <div className="native-names-values">
+                      {nativeNameValues?.map((e, i) => (
+                        <div key={i}>{e}</div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* <div className="native-name">
+                    {nativeNameKeys.map((e, i) => (
+                      <span key={i}>{e}</span>
+                    ))}
+                  </div>
+                  <div className="native-name">
+                    {nativeNameValues.map((e, i) => (
+                      <span key={i}>{e}</span>
+                    ))}
+                  </div> */}
                 </li>
                 <li>
                   <strong>Population: </strong>
@@ -87,11 +115,13 @@ export default function Details() {
                 </li>
                 <li>
                   <strong>Currencies: </strong>
-                  {Object.keys(countryDetailsData[0].currencies).join(", ")}
+                  {countryDetailsData[0].currencies &&
+                    Object.keys(countryDetailsData[0].currencies).join(", ")}
                 </li>
                 <li>
                   <strong>Languages: </strong>
-                  {Object.values(countryDetailsData[0].languages).join(", ")}
+                  {countryDetailsData[0].languages &&
+                    Object.values(countryDetailsData[0].languages).join(", ")}
                 </li>
               </ul>
               <div className="google-maps">

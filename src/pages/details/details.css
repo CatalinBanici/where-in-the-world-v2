@@ -91,6 +91,21 @@
   line-height: 30px;
 }
 
+.native-names-container {
+  display: flex;
+  gap: 5px;
+}
+
+.native-names-keys {
+  display: flex;
+  flex-direction: column;
+}
+
+.native-names-values {
+  display: flex;
+  flex-direction: column;
+}
+
 .google-maps {
   color: var(--Text);
 }
