@@ -7,15 +7,16 @@
 .flag-details-loading-container {
   width: 50%;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 .flag-details-loading {
-  height: 90%;
-  width: 90%;
+  height: 75%;
+  width: 85%;
+  margin: 20px;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
 }
 
 .details-details-loading {
@@ -25,18 +26,16 @@
 
 .h2-loading {
   height: 20px;
-  width: 170px;
+  width: 220px;
   margin-bottom: 35px;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
 }
 
 .ul-loading {
   display: flex;
   flex-direction: column;
-
-  height: 160px;
   flex-wrap: wrap;
 }
 
@@ -46,7 +45,7 @@
   width: 200px;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
   margin-block: 8px;
   list-style: none;
 }
@@ -73,7 +72,7 @@
 .border-button-loading {
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
   height: 40px;
   width: 100px;
   border-radius: 5px;

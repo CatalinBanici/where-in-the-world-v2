@@ -32,6 +32,8 @@ export default function Details() {
   console.log("nativeNameKeys", nativeNameKeys);
   console.log("nativeNameValues", nativeNameValues);
 
+  const loading = true;
+
   return (
     <>
       <div className="details-page">
@@ -109,7 +111,7 @@ export default function Details() {
                 </li>
                 <li>
                   <strong>Top Level Domain: </strong>
-                  {countryDetailsData[0].tld.map((item) => {
+                  {countryDetailsData[0]?.tld?.map((item) => {
                     return item;
                   }) || "none"}
                 </li>

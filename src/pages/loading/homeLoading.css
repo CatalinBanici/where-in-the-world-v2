@@ -19,7 +19,7 @@
   height: 50%;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
 }
 
 .details-loading {
@@ -35,7 +35,7 @@
   margin-block: 5px;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
 }
 
 .p {
@@ -43,7 +43,7 @@
   height: 15px;
   background-image: var(--LoadingGradient);
   background-size: 400%;
-  animation: loading-animation 1s infinite alternate;
+  animation: loading-animation 0.5s infinite alternate;
 }
 
 @keyframes loading-animation {
