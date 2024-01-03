@@ -28,9 +28,6 @@ export default function Details() {
     nativeName && Object.values(nativeName).map((e) => e.common);
 
   console.log("countryDetailsData", countryDetailsData);
-  console.log("nativeName", nativeName);
-  console.log("nativeNameKeys", nativeNameKeys);
-  console.log("nativeNameValues", nativeNameValues);
 
   const loading = true;
 
@@ -56,74 +53,71 @@ export default function Details() {
           <div className="extra-details-container">
             <div className="flag">
               <img
-                src={countryDetailsData[0].flags.png}
+                src={countryDetailsData[0]?.flags?.png}
                 alt={
-                  countryDetailsData[0].flags.alt ||
-                  `Flag of ${countryDetailsData[0].name.common}`
+                  countryDetailsData[0]?.flags?.alt ||
+                  `Flag of ${countryDetailsData[0]?.name?.common}`
                 }
               />
             </div>
             <div className="details">
-              <h2>{countryDetailsData[0].name.common}</h2>
+              <h2>{countryDetailsData[0]?.name?.common}</h2>
               <ul className="details-wrapper">
                 <li>
                   <strong> Native Names: </strong>
-                  <div className="native-names-container">
-                    <div className="native-names-keys">
-                      {nativeNameKeys?.map((e, i) => (
-                        <div key={i}>{e}:</div>
-                      ))}
+                  {(nativeName && (
+                    <div className="native-names-container">
+                      <div className="native-names-keys">
+                        {nativeNameKeys?.map((e, i) => (
+                          <div key={i}>{e}:</div>
+                        ))}
+                      </div>
+                      <div className="native-names-values">
+                        {nativeNameValues?.map((e, i) => (
+                          <div key={i}>{e}</div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="native-names-values">
-                      {nativeNameValues?.map((e, i) => (
-                        <div key={i}>{e}</div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* <div className="native-name">
-                    {nativeNameKeys.map((e, i) => (
-                      <span key={i}>{e}</span>
-                    ))}
-                  </div>
-                  <div className="native-name">
-                    {nativeNameValues.map((e, i) => (
-                      <span key={i}>{e}</span>
-                    ))}
-                  </div> */}
+                  )) || <div>none</div>}
                 </li>
                 <li>
                   <strong>Population: </strong>
-                  {countryDetailsData[0].population
+                  {countryDetailsData[0]?.population
                     .toString()
                     .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}
                 </li>
                 <li>
                   <strong>Region: </strong>
-                  {countryDetailsData[0].region}
+                  {countryDetailsData[0]?.region || "none"}
                 </li>
                 <li>
                   <strong>Sub Region: </strong>
-                  {countryDetailsData[0].subregion}
+                  {countryDetailsData[0]?.subregion || "none"}
                 </li>
                 <li>
                   <strong>Capital: </strong>
-                  {countryDetailsData[0].capital}
+                  {countryDetailsData[0]?.capital || "none"}
                 </li>
                 <li>
                   <strong>Top Level Domain: </strong>
-                  {countryDetailsData[0]?.tld?.map((item) => {
-                    return item;
-                  }) || "none"}
+                  {countryDetailsData[0]?.tld?.map((item) => item).join("; ") ||
+                    "none"}
                 </li>
                 <li>
                   <strong>Currencies: </strong>
-                  {countryDetailsData[0].currencies &&
-                    Object.keys(countryDetailsData[0].currencies).join(", ")}
+                  {(countryDetailsData[0]?.currencies &&
+                    Object.keys(countryDetailsData[0]?.currencies).join(
+                      "; "
+                    )) ||
+                    "none"}
                 </li>
                 <li>
                   <strong>Languages: </strong>
-                  {countryDetailsData[0].languages &&
-                    Object.values(countryDetailsData[0].languages).join(", ")}
+                  {(countryDetailsData[0]?.languages &&
+                    Object.values(countryDetailsData[0]?.languages).join(
+                      "; "
+                    )) ||
+                    "none"}
                 </li>
               </ul>
               <div className="google-maps">
@@ -131,7 +125,7 @@ export default function Details() {
                   View on{" "}
                   <Link
                     target="blank"
-                    to={countryDetailsData[0].maps.googleMaps}
+                    to={countryDetailsData[0]?.maps?.googleMaps}
                   >
                     Google Maps
                   </Link>
