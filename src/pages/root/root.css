@@ -21,3 +21,47 @@
   flex-direction: column;
   padding-bottom: 150px;
 }
+
+.back-to-top-button {
+  position: sticky;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  bottom: 30px;
+  color: var(--Text);
+  align-self: end;
+  margin-right: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--ElementsHover);
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  cursor: pointer;
+  opacity: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  animation: pop-up-animation 0.3s;
+}
+
+.back-to-top-button:hover {
+  transform: scale(110%);
+}
+
+@keyframes pop-up-animation {
+  0% {
+    opacity: 10%;
+    transform: scale(70%);
+  }
+
+  100% {
+    opacity: 90%;
+    transform: scale(100%);
+  }
+}
+
+@media (max-width: 1070px) {
+  .back-to-top-button:hover {
+    transform: none;
+  }
+}

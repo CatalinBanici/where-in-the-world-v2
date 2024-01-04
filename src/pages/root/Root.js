@@ -8,6 +8,9 @@ import "./root.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
+// REACT ICONS
+import { FaArrowUp } from "react-icons/fa";
+
 export default function Root() {
   const THEME_KEY = "themeOptionKey";
 
@@ -16,6 +19,25 @@ export default function Root() {
     : "dark";
 
   const [theme, setTheme] = useState(STORED_THEME_OPTION);
+
+  const [showBackToTopButton, setShowBackToTopButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        setShowBackToTopButton(true);
+      } else {
+        setShowBackToTopButton(false);
+      }
+    });
+  }, []);
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   useEffect(() => {
     localStorage.setItem(THEME_KEY, JSON.stringify(theme));
@@ -32,6 +54,16 @@ export default function Root() {
       <div className="app-container">
         <Header theme={theme} handleTheme={handleTheme} />
         <Main />
+        {showBackToTopButton && (
+          <button
+            className="back-to-top-button"
+            onClick={scrollToTop}
+            title="Scroll to top"
+            aria-label="Scroll to top"
+          >
+            <FaArrowUp />
+          </button>
+        )}
       </div>
     </div>
   );
