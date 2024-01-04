@@ -44,10 +44,65 @@ export default function Home() {
     },
   ] = useLazyGetCountriesBySubRegionQuery();
 
-  const [sortOption, setSortOption] = useState("");
-  const [filterByRegionOption, setFilterByRegionOption] = useState("");
-  const [filterBySubRegionOption, setFilterBySubRegionOption] = useState("");
-  const [filterSearchByNameOption, setFilterSearchByNameOption] = useState("");
+  const SORT_OPTION_KEY = "sortOptionKey";
+  const REGION_OPTION_KEY = "regionFilterOptionKey";
+  const SUBREGION_OPTION_KEY = "subregionFilterOptionKey";
+  const SEARCH_OPTION_KEY = "searchFilterOptionKey";
+
+  const STORED_SORT_OPTION = sessionStorage.getItem(SORT_OPTION_KEY)
+    ? JSON.parse(sessionStorage.getItem(SORT_OPTION_KEY))
+    : "";
+  const STORED_REGION_FILTER_OPTION = sessionStorage.getItem(REGION_OPTION_KEY)
+    ? JSON.parse(sessionStorage.getItem(REGION_OPTION_KEY))
+    : "";
+  const STORED_SUBREGION_FILTER_OPTION = sessionStorage.getItem(
+    SUBREGION_OPTION_KEY
+  )
+    ? JSON.parse(sessionStorage.getItem(SUBREGION_OPTION_KEY))
+    : "";
+  const STORED_SEARCH_FILTER_OPTION = sessionStorage.getItem(SEARCH_OPTION_KEY)
+    ? JSON.parse(sessionStorage.getItem(SEARCH_OPTION_KEY))
+    : "";
+
+  const [sortOption, setSortOption] = useState(STORED_SORT_OPTION);
+  const [filterByRegionOption, setFilterByRegionOption] = useState(
+    STORED_REGION_FILTER_OPTION
+  );
+  const [filterBySubRegionOption, setFilterBySubRegionOption] = useState(
+    STORED_SUBREGION_FILTER_OPTION
+  );
+  const [filterSearchByNameOption, setFilterSearchByNameOption] = useState(
+    STORED_SEARCH_FILTER_OPTION
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem(SORT_OPTION_KEY, JSON.stringify(sortOption));
+    console.log("sort option effect");
+  }, [sortOption]);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      REGION_OPTION_KEY,
+      JSON.stringify(filterByRegionOption)
+    );
+    console.log("region option effect");
+  }, [filterByRegionOption]);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      SUBREGION_OPTION_KEY,
+      JSON.stringify(filterBySubRegionOption)
+    );
+    console.log("subregion option effect");
+  }, [filterBySubRegionOption]);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      SEARCH_OPTION_KEY,
+      JSON.stringify(filterSearchByNameOption)
+    );
+    console.log("search option effect");
+  }, [filterSearchByNameOption]);
 
   useEffect(() => {
     if (filterByRegionOption) {
@@ -109,7 +164,7 @@ export default function Home() {
     }
 
     if (filterSearchByNameOption) {
-      countryData = countryData.filter((country) =>
+      countryData = countryData?.filter((country) =>
         country.name.common
           .toLowerCase()
           .includes(filterSearchByNameOption.toLowerCase())
