@@ -23,11 +23,25 @@ export default function Details() {
   const navigate = useNavigate();
   const nativeName =
     countryDetailsSuccess && countryDetailsData[0]?.name?.nativeName;
-  const nativeNameKeys = nativeName && Object.keys(nativeName);
-  const nativeNameValues =
+  const nativeNameObjectKeys = nativeName && Object.keys(nativeName);
+  const nativeNameObjectValues =
     nativeName && Object.values(nativeName).map((e) => e.common);
 
+  const currencies = countryDetailsSuccess && countryDetailsData[0]?.currencies;
+  const currenciesObjectKeys = currencies && Object.keys(currencies);
+  const currenciesObjectValues =
+    currencies && Object.values(currencies).map((e) => e);
+
+  const currencyName = currencies && currenciesObjectValues.map((e) => e.name);
+  const currencySymbol =
+    currencies && currenciesObjectValues.map((e) => e.symbol);
+
   console.log("countryDetailsData", countryDetailsData);
+  console.log("currencies", currencies);
+  console.log("currenciesKeys", currenciesObjectKeys);
+  console.log("currenciesValues", currenciesObjectValues);
+  console.log("currencyName", currencyName);
+  console.log("currencySymbol", currencySymbol);
 
   const loading = true;
 
@@ -68,12 +82,12 @@ export default function Details() {
                   {(nativeName && (
                     <div className="native-names-container">
                       <div className="native-names-keys">
-                        {nativeNameKeys?.map((e, i) => (
+                        {nativeNameObjectKeys?.map((e, i) => (
                           <div key={i}>{e}:</div>
                         ))}
                       </div>
                       <div className="native-names-values">
-                        {nativeNameValues?.map((e, i) => (
+                        {nativeNameObjectValues?.map((e, i) => (
                           <div key={i}>{e}</div>
                         ))}
                       </div>
@@ -105,11 +119,28 @@ export default function Details() {
                 </li>
                 <li>
                   <strong>Currencies: </strong>
-                  {(countryDetailsData[0]?.currencies &&
-                    Object.keys(countryDetailsData[0]?.currencies).join(
-                      "; "
+                  <div className="currencies-container">
+                    {(currencies && (
+                      <>
+                        <div className="currencies-symbol">
+                          {currencySymbol?.map((e, i) => (
+                            <div key={i}>{e}</div>
+                          ))}
+                        </div>
+                        <div className="currencies">
+                          {currenciesObjectKeys?.map((e, i) => (
+                            <div key={i}>{e}</div>
+                          ))}
+                        </div>
+                        <div className="currencies-name">
+                          {currencyName?.map((e, i) => (
+                            <div key={i}>{`(${e})`}</div>
+                          ))}
+                        </div>
+                      </>
                     )) ||
-                    "none"}
+                      "none"}
+                  </div>
                 </li>
                 <li>
                   <strong>Languages: </strong>

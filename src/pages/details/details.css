@@ -103,6 +103,16 @@
   flex-direction: column;
 }
 
+.currencies-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.currencies-name,
+.currencies {
+  margin-left: 5px;
+}
+
 .google-maps {
   color: var(--Text);
 }

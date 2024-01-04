@@ -92,7 +92,7 @@ export default function Home() {
     }
 
     if (sortOption) {
-      countryData.sort((a, b) => {
+      countryData?.sort((a, b) => {
         switch (sortOption) {
           case "pop+":
             return a.population - b.population;
