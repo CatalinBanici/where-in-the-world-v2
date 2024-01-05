@@ -4,9 +4,9 @@ import ReactDOM from "react-dom/client";
 
 // REDUX
 import { Provider } from "react-redux";
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
+// import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { store } from "./redux/store";
-import { countriesApi } from "./redux/api/countriesApi";
+// import { countriesApi } from "./redux/api/countriesApi";
 
 // STYLES
 import "./index.css";
@@ -18,7 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <ApiProvider api={countriesApi}> */}
+        <App />
+      {/* </ApiProvider> */}
     </Provider>
   </React.StrictMode>
 );
