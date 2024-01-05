@@ -18,9 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ApiProvider api={countriesApi}>
-        <App />
-      </ApiProvider>
+      <App />
     </Provider>
   </React.StrictMode>
 );
