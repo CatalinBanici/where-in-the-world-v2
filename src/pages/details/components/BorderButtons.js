@@ -1,9 +1,17 @@
+// REACT
 import React, { useEffect } from "react";
+
+// REACT ROUTER
 import { Link } from "react-router-dom";
+
+// REDUX
 import { useLazyGetCountriesByCodesQuery } from "../../../redux/api/countriesApi";
+
+// STYLES
 import "./borderButtons.css";
 
 export default function BorderButtons({ countryDetailsData }) {
+  // data from the api based on codes endpoint, which is 'borderString' param
   const [
     triggerFetchCodesCountries,
     {
@@ -19,10 +27,7 @@ export default function BorderButtons({ countryDetailsData }) {
 
   useEffect(() => {
     borderString && triggerFetchCodesCountries(borderString);
-    console.log("codes effect ran");
   }, [borderString]);
-
-  const loadingOrError = true;
 
   return (
     <div className="border-wrapper">

@@ -2,13 +2,12 @@
 import { MdDarkMode, MdOutlineWbSunny } from "react-icons/md";
 
 // REACT ROUTER
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // STYLES
 import "./header.css";
 
 export default function Header({ theme, handleTheme }) {
-  const navigate = useNavigate();
   return (
     <header>
       <h1 title="Navigate to Home Page">

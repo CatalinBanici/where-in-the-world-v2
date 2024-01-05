@@ -21,10 +21,14 @@ export default function Filters({
   filterSearchByNameOption,
   setFilterSearchByNameOption,
 }) {
+  // toggle open the filters menu on mobile display
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
+
+  // ref to the jsx elements that will manage the functionality to close the filters menu when the user clicks outside of it
   const filtersRef = useRef();
   const filterButtonRef = useRef();
 
+  // functionality to close the filters menu when the user clicks outside of it (on mobile display)
   useEffect(() => {
     function closeOnOutsideClick(e) {
       if (
@@ -45,6 +49,7 @@ export default function Filters({
   return (
     <>
       <div className="search-total-container">
+        {/* search input */}
         <div className="search-input-container">
           <span>
             <AiOutlineSearch />
@@ -62,6 +67,7 @@ export default function Filters({
         </div>
       </div>
 
+      {/* button that open and close the filters menu on mobile display */}
       <div className="filters-menu" ref={filterButtonRef}>
         <button onClick={() => setFilterMenuOpen(!filterMenuOpen)}>
           <span>Filters</span>
@@ -82,6 +88,7 @@ export default function Filters({
             : "select-wrapper-closed"
         }`}
       >
+        {/* sort option */}
         <div className="select-input-container">
           <label htmlFor="countrySorting">Sort by</label>
           <select
@@ -101,6 +108,7 @@ export default function Filters({
           </span>
         </div>
 
+        {/* filter by region option */}
         <div className="select-input-container">
           <label htmlFor="regionFilters">Filter by Region</label>
           <select
@@ -123,6 +131,7 @@ export default function Filters({
           </span>
         </div>
 
+        {/* filter by subregion option */}
         <div className="select-input-container">
           <label htmlFor="subregionFilters">Filter by Subregion</label>
           <select
@@ -144,6 +153,7 @@ export default function Filters({
           </span>
         </div>
 
+        {/* clear filters button */}
         <button
           title="Clear Filters"
           className="clear-button"

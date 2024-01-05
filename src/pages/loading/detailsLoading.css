@@ -7,7 +7,7 @@
 .flag-details-loading-container {
   width: 50%;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
 }
 .flag-details-loading {

@@ -10,15 +10,18 @@ import {
   useLazyGetCountriesByRegionQuery,
   useLazyGetCountriesBySubRegionQuery,
 } from "../../redux/api/countriesApi";
+
+// COMPONENTS
 import Filters from "./components/Filters";
 import Card from "./components/Card";
-
-// STYLES
-import "./home.css";
 import HomeLoading from "../loading/HomeLoading";
 import Error from "../error/Error";
 
+// STYLES
+import "./home.css";
+
 export default function Home() {
+  // data from the api
   const {
     data: allCountriesData,
     isFetching: allCountriesLoading,
@@ -44,11 +47,13 @@ export default function Home() {
     },
   ] = useLazyGetCountriesBySubRegionQuery();
 
+  // sesion storage keys
   const SORT_OPTION_KEY = "sortOptionKey";
   const REGION_OPTION_KEY = "regionFilterOptionKey";
   const SUBREGION_OPTION_KEY = "subregionFilterOptionKey";
   const SEARCH_OPTION_KEY = "searchFilterOptionKey";
 
+  // get the filter and sort state from session storage
   const STORED_SORT_OPTION = sessionStorage.getItem(SORT_OPTION_KEY)
     ? JSON.parse(sessionStorage.getItem(SORT_OPTION_KEY))
     : "";
@@ -64,6 +69,7 @@ export default function Home() {
     ? JSON.parse(sessionStorage.getItem(SEARCH_OPTION_KEY))
     : "";
 
+  // sort and filter state
   const [sortOption, setSortOption] = useState(STORED_SORT_OPTION);
   const [filterByRegionOption, setFilterByRegionOption] = useState(
     STORED_REGION_FILTER_OPTION
@@ -75,9 +81,9 @@ export default function Home() {
     STORED_SEARCH_FILTER_OPTION
   );
 
+  // put the filter and sort state to the session storage
   useEffect(() => {
     sessionStorage.setItem(SORT_OPTION_KEY, JSON.stringify(sortOption));
-    console.log("sort option effect");
   }, [sortOption]);
 
   useEffect(() => {
@@ -85,7 +91,6 @@ export default function Home() {
       REGION_OPTION_KEY,
       JSON.stringify(filterByRegionOption)
     );
-    console.log("region option effect");
   }, [filterByRegionOption]);
 
   useEffect(() => {
@@ -93,7 +98,6 @@ export default function Home() {
       SUBREGION_OPTION_KEY,
       JSON.stringify(filterBySubRegionOption)
     );
-    console.log("subregion option effect");
   }, [filterBySubRegionOption]);
 
   useEffect(() => {
@@ -101,19 +105,22 @@ export default function Home() {
       SEARCH_OPTION_KEY,
       JSON.stringify(filterSearchByNameOption)
     );
-    console.log("search option effect");
   }, [filterSearchByNameOption]);
 
+  // trigger api request when filter by region and subregion change
   useEffect(() => {
     if (filterByRegionOption) {
       triggerFetchRegionCountries(filterByRegionOption);
     }
+  }, [filterByRegionOption]);
 
+  useEffect(() => {
     if (filterBySubRegionOption) {
       triggerFetchSubRegionCountries(filterBySubRegionOption);
     }
-  }, [filterByRegionOption, filterBySubRegionOption]);
+  }, [filterBySubRegionOption]);
 
+  // manage the data and rendering it based on the selected sort or filter option
   let renderData;
   let countryData;
 
@@ -184,8 +191,7 @@ export default function Home() {
     ));
   }
 
-  console.log("countryData", countryData);
-
+  // extract the regions and subregions data to be rendered in the filters dropdown options
   const regions = allCountriesData?.map((e) => e.region);
   const regionsArray = [...new Set(regions)];
 

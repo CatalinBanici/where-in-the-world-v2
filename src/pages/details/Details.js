@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
-import {
-  useGetCountryByNameQuery,
-  useLazyGetCountriesByCodesQuery,
-} from "../../redux/api/countriesApi";
+// REACT
+import React from "react";
+
+// REDUX
+import { useGetCountryByNameQuery } from "../../redux/api/countriesApi";
+
+// REACT ROUTER
 import { useNavigate, useParams, Link } from "react-router-dom";
+
+// REACT ICONS
 import { IoIosArrowRoundBack } from "react-icons/io";
+
+// STYLES
 import "./details.css";
+
+// COMPONENTS
 import BorderButtons from "./components/BorderButtons";
 import DetailsLoading from "../loading/DetailsLoading";
 import Error from "../error/Error";
 
 export default function Details() {
   const { nameParam } = useParams();
+  const navigate = useNavigate();
 
+  // data for a single country
   const {
     data: countryDetailsData,
     isFetching: countryDetailsLoading,
@@ -20,7 +30,7 @@ export default function Details() {
     isError: countryDetailsError,
   } = useGetCountryByNameQuery(nameParam);
 
-  const navigate = useNavigate();
+  // extract the native names and currencies from a country to be rendered in the jsx
   const nativeName =
     countryDetailsSuccess && countryDetailsData[0]?.name?.nativeName;
   const nativeNameObjectKeys = nativeName && Object.keys(nativeName);
@@ -35,15 +45,6 @@ export default function Details() {
   const currencyName = currencies && currenciesObjectValues.map((e) => e.name);
   const currencySymbol =
     currencies && currenciesObjectValues.map((e) => e.symbol);
-
-  console.log("countryDetailsData", countryDetailsData);
-  console.log("currencies", currencies);
-  console.log("currenciesKeys", currenciesObjectKeys);
-  console.log("currenciesValues", currenciesObjectValues);
-  console.log("currencyName", currencyName);
-  console.log("currencySymbol", currencySymbol);
-
-  const loading = true;
 
   return (
     <>
