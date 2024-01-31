@@ -17,6 +17,9 @@ import Card from "./components/Card";
 import HomeLoading from "../loading/HomeLoading";
 import Error from "../error/Error";
 
+// REACT ICONS
+import { FaArrowUp } from "react-icons/fa";
+
 // STYLES
 import "./home.css";
 
@@ -81,6 +84,9 @@ export default function Home() {
     STORED_SEARCH_FILTER_OPTION
   );
 
+  // 'scroll to top' button state
+  const [showBackToTopButton, setShowBackToTopButton] = useState(false);
+
   // put the filter and sort state to the session storage
   useEffect(() => {
     sessionStorage.setItem(SORT_OPTION_KEY, JSON.stringify(sortOption));
@@ -119,6 +125,25 @@ export default function Home() {
       triggerFetchSubRegionCountries(filterBySubRegionOption);
     }
   }, [filterBySubRegionOption]);
+
+  // show the 'scroll to top' button when the user has started to scroll down a little
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        setShowBackToTopButton(true);
+      } else {
+        setShowBackToTopButton(false);
+      }
+    });
+  }, []);
+
+  // scroll to top on click event
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   // manage the data and rendering it based on the selected sort or filter option
   let renderData;
@@ -218,6 +243,18 @@ export default function Home() {
         />
       </div>
       <ul className="card-container">{renderData}</ul>
+
+      {/* 'scroll to top' button */}
+      {showBackToTopButton && (
+        <button
+          className="back-to-top-button"
+          onClick={scrollToTop}
+          title="Scroll to top"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </>
   );
 }
