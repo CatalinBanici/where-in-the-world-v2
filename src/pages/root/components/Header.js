@@ -14,11 +14,12 @@ export default function Header({ theme, handleTheme }) {
         <Link to="/">Countries</Link>
       </h1>
       <button
-        title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+        title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
         onClick={handleTheme}
       >
-        <span>{theme === "dark" ? <MdDarkMode /> : <MdOutlineWbSunny />}</span>
-        {theme === "dark" ? "Light Theme" : "Dark Theme"}
+        <span>{theme === "dark" ? <MdOutlineWbSunny /> : <MdDarkMode />}</span>
+        {theme === "dark" ? "Light Mode" : "Dark Mode"}
       </button>
     </header>
   );

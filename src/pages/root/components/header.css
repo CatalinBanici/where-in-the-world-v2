@@ -27,7 +27,6 @@ header button {
   background-color: transparent;
   border: none;
   color: var(--Text);
-  width: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,6 +45,7 @@ header button:active {
 
 header button svg {
   font-size: 20px;
+  margin-right: 5px;
 }
 
 @media (max-width: 1070px) {
