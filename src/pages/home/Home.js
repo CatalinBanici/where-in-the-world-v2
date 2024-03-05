@@ -11,6 +11,10 @@ import {
   useLazyGetCountriesBySubRegionQuery,
 } from "../../redux/api/countriesApi";
 
+// AOS
+import aos from "aos";
+import "aos/dist/aos.css";
+
 // COMPONENTS
 import Filters from "./components/Filters";
 import Card from "./components/Card";
@@ -145,6 +149,11 @@ export default function Home() {
     });
   }
 
+  // aos
+  useEffect(() => {
+    aos.init();
+  }, []);
+
   // manage the data and rendering it based on the selected sort or filter option
   let renderData;
   let countryData;
@@ -204,7 +213,12 @@ export default function Home() {
     }
 
     renderData = countryData?.map((country, index) => (
-      <li className="card-list" key={index}>
+      <li
+        className="card-list"
+        key={index}
+        data-aos="fade-up"
+        data-aos-duration="500"
+      >
         <Link
           className="link-card"
           title="Click to view more details."
