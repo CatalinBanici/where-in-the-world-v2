@@ -132,13 +132,18 @@ export default function Home() {
 
   // show the 'scroll to top' button when the user has started to scroll down a little
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    function handleEvent() {
       if (window.scrollY > 300) {
         setShowBackToTopButton(true);
       } else {
         setShowBackToTopButton(false);
       }
-    });
+    }
+    window.addEventListener("scroll", handleEvent);
+
+    return () => {
+      window.removeEventListener("scroll", handleEvent);
+    };
   }, []);
 
   // scroll to top on click event
