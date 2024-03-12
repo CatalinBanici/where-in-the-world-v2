@@ -1,3 +1,13 @@
+# Hello, and welcome!
+
+This is a web application that represents the countries of the world! You can search, filter and sort countries, as well as being able to see the details of a particular country. It is based on the REST Countries API with the help of RTK-Query. The app also features a light / dark theme.
+
+![home](https://github.com/CatalinBanici/where-in-the-world-v2/assets/105233740/1405f20d-99f2-484b-aa2e-6176ff61403b)
+
+![details](https://github.com/CatalinBanici/where-in-the-world-v2/assets/105233740/736551f8-02e3-4a0b-a4b2-2034adc25a51)
+
+===============================================================
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
